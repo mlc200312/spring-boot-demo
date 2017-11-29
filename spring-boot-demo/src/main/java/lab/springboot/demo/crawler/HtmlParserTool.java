@@ -1,4 +1,4 @@
-package lab.spring.boot.demo.crawler;
+package lab.springboot.demo.crawler;
 
 import java.util.HashMap;
 import java.util.HashSet;

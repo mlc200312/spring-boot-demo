@@ -1,4 +1,4 @@
-package lab.spring.boot.demo.thread;
+package lab.springboot.demo.thread;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -13,9 +13,7 @@ public class TestThreadPool {
 	public static void main(String[] args) {
 
 		// 构造一个线程池
-		ThreadPoolExecutor threadPool = new ThreadPoolExecutor(2, 4, 3,
-				TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(3),
-				new ThreadPoolExecutor.DiscardOldestPolicy());
+		ThreadPoolExecutor threadPool = new ThreadPoolExecutor(2, 4, 3, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(3), new ThreadPoolExecutor.DiscardOldestPolicy());
 
 		for (int i = 1; i <= produceTaskMaxNumber; i++) {
 			try {

@@ -1,4 +1,4 @@
-package lab.spring.boot.demo.crawler;
+package lab.springboot.demo.crawler;
 
 public class LinkFilter {
 

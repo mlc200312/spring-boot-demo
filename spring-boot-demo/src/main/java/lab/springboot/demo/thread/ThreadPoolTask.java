@@ -1,4 +1,4 @@
-package lab.spring.boot.demo.thread;
+package lab.springboot.demo.thread;
 
 import java.io.Serializable;
 

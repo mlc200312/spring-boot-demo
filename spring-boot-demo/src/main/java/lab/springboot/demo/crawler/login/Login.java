@@ -1,4 +1,4 @@
-package lab.spring.boot.demo.crawler.login;
+package lab.springboot.demo.crawler.login;
 
 import java.io.DataOutputStream;
 import java.io.File;

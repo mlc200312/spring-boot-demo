@@ -1,4 +1,4 @@
-package lab.spring.boot.demo.crawler;
+package lab.springboot.demo.crawler;
 import java.util.LinkedList;  
 /** 
  * 自定义队列类 保存TODO表 

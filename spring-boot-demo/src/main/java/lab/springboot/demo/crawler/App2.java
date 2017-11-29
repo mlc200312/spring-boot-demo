@@ -1,6 +1,6 @@
-package lab.spring.boot.demo.crawler;
+package lab.springboot.demo.crawler;
 
-import lab.spring.boot.demo.crawler.BfsSpider.DoWhat;
+import lab.springboot.demo.crawler.BfsSpider.DoWhat;
 
 public class App2 {
 
