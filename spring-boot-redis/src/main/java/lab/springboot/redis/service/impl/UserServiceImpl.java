@@ -16,22 +16,21 @@ import org.springframework.stereotype.Service;
 import com.springboot.util.redis.impl.RedisValueOpsImpl;
 
 @Service("userService")
-public class UserServiceImpl extends RedisValueOpsImpl<User> implements
-		UserService {
+public class UserServiceImpl extends RedisValueOpsImpl implements UserService {
 
 	@Resource(name = "redisTemplate")
-	private void setSuperRedisTemplate(RedisTemplate<String, User> redisTemplate) {
+	private void setSuperRedisTemplate(RedisTemplate<String, Object> redisTemplate) {
 		super.setRedisTemplate(redisTemplate);
 	}
 
 	@Override
 	public void save(User user) {
-		this.add("KEY_USER_" + user.getUserName(), user);
+		this.set("KEY_USER_" + user.getUserName(), user);
 	}
 
 	@Override
 	public User find(String userName) {
-		User user = this.get("KEY_USER_" + userName);
+		User user = (User) this.get("KEY_USER_" + userName);
 		return user;
 	}
 
