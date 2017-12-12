@@ -25,7 +25,8 @@ public class App {
 
 		@Override
 		protected Object clone() throws CloneNotSupportedException {
-			return (Person) super.clone();
+			Person person = new Person(this.age, new String(this.name));
+			return person;
 		}
 	}
 
@@ -42,6 +43,7 @@ public class App {
 			Person clonePerson2 = person;
 			System.out.println(person.getName() == clonePerson.getName() ? "浅拷贝" : "深拷贝");
 			System.out.println(person.getName() == clonePerson2.getName() ? "浅拷贝" : "深拷贝");
+
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}

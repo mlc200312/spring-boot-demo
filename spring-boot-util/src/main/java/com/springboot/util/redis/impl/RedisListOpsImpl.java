@@ -1,18 +1,30 @@
 package com.springboot.util.redis.impl;
 
+import org.springframework.data.redis.core.BoundListOperations;
+
 import com.springboot.util.redis.RedisSupport;
 
-public class RedisListOpsImpl<T> extends RedisSupportImpl<T> implements
-		RedisSupport<T> {
+public class RedisListOpsImpl extends RedisSupportImpl implements RedisSupport {
 
-	@Override
-	public void add(String key, T t) {
-		this.getRedisTemplate().boundListOps(key).leftPush(t);
+	public void leftPush(String key, Object value) {
+		BoundListOperations<String, Object> boundListOps = getRedisTemplate().boundListOps(key);
+		boundListOps.leftPush(value);
 	}
 
-	@Override
-	public T get(String key) {
-		return this.getRedisTemplate().boundListOps(key).leftPop();
+	public Object leftPop(String key) {
+		BoundListOperations<String, Object> boundListOps = getRedisTemplate().boundListOps(key);
+		Object result = boundListOps.leftPop();
+		return result;
 	}
 
+	public void rightPush(String key, Object value) {
+		BoundListOperations<String, Object> boundListOps = getRedisTemplate().boundListOps(key);
+		boundListOps.rightPush(value);
+	}
+
+	public Object rightPop(String key) {
+		BoundListOperations<String, Object> boundListOps = getRedisTemplate().boundListOps(key);
+		Object result = boundListOps.rightPop();
+		return result;
+	}
 }

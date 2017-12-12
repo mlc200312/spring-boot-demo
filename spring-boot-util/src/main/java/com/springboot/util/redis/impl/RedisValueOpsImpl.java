@@ -4,21 +4,16 @@ import org.springframework.data.redis.core.BoundValueOperations;
 
 import com.springboot.util.redis.RedisSupport;
 
-public abstract class RedisValueOpsImpl<T> extends RedisSupportImpl<T>
-		implements RedisSupport<T> {
+public abstract class RedisValueOpsImpl extends RedisSupportImpl implements RedisSupport {
 
-	@Override
-	public void add(String key, T t) {
-		BoundValueOperations<String, T> operations = this.getRedisTemplate()
-				.boundValueOps(key);
-		operations.set(t);
+	public void set(String key, Object value) {
+		BoundValueOperations<String, Object> boundValueOps = getRedisTemplate().boundValueOps(key);
+		boundValueOps.set(value);
 	}
 
-	@Override
-	public T get(String key) {
-		BoundValueOperations<String, T> operations = this.getRedisTemplate()
-				.boundValueOps(key);
-		return operations.get();
+	public Object get(String key) {
+		BoundValueOperations<String, Object> boundValueOps = getRedisTemplate().boundValueOps(key);
+		return boundValueOps.get();
 	}
 
 }

@@ -21,7 +21,7 @@ public class LinkedQueue<T> {
 		size++;
 	}
 
-	public T dequeue() {
+	public synchronized T dequeue() {
 		if (rear == front) {
 			try {
 				throw new Exception("堆栈为空");

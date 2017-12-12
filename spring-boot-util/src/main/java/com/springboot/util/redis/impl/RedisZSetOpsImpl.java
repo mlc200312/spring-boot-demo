@@ -1,19 +1,24 @@
 package com.springboot.util.redis.impl;
 
+import org.springframework.data.redis.core.BoundZSetOperations;
+
 import com.springboot.util.redis.RedisSupport;
 
-public class RedisZSetOpsImpl<T> extends RedisSupportImpl<T> implements RedisSupport<T>{
+public class RedisZSetOpsImpl extends RedisSupportImpl implements RedisSupport {
 
-	@Override
-	public void add(String key, T t) {
-		// TODO Auto-generated method stub
-		
+	public Boolean add(String key, Object vaule, double score) {
+		BoundZSetOperations<String, Object> boundZSetOps = getRedisTemplate().boundZSetOps(key);
+		return boundZSetOps.add(vaule, score);
 	}
 
-	@Override
-	public T get(String key) {
-		// TODO Auto-generated method stub
-		return null;
+	public Double score(String key, Object value) {
+		BoundZSetOperations<String, Object> boundZSetOps = getRedisTemplate().boundZSetOps(key);
+		return boundZSetOps.score(value);
+	}
+
+	public Double incrementScore(String key, Object value, double score) {
+		BoundZSetOperations<String, Object> boundZSetOps = getRedisTemplate().boundZSetOps(key);
+		return boundZSetOps.incrementScore(value, score);
 	}
 
 }
